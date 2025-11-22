@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Service Name: We call this 'timescaledb'
+  timescaledb:
+    # The Image: This downloads a pre-built Linux OS with Postgres + Timescale installed
+    image: timescale/timescaledb:latest-pg14
+    
+    # Container Name: Makes it easy to find
+    container_name: alpha_db
+    
+    # Restart Policy: If it crashes or you reboot, start it up again
+    restart: always
+    
+    # Environment Variables: Set the password here
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=alpha_password
+    
+    # Ports: Map port 5432 inside the container to port 5432 on your laptop
+    ports:
+      - "5432:5432"
+    
+    # Volumes: This is CRITICAL.
+    # It maps the database storage to a folder on your laptop called 'pg_data'.
+    # This ensures that if you delete the container, your data persists.
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
