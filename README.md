@@ -1,30 +1,30 @@
-The Alpha Sentinel: A Real-Time Cryptocurrency Strategy Engine
+# The Alpha Sentinel: A Real-Time Cryptocurrency Strategy Engine
 
 The Alpha Sentinel represents a comprehensive, end-to-end machine learning system designed to forecast short-term Bitcoin price fluctuations. This is achieved through the synthesis of technical analysis, specifically focusing on price action, and sentiment analysis derived from news feeds. The system incorporates a production-grade data pipeline, a real-time inference engine, and an interactive dashboard intended for the monitoring of market signals.
 
-(Replace this link with an actual screenshot of the Streamlit dashboard)
+![Alt Text](\assets\dashboard.png)
 
-System Architecture
+### System Architecture
 
 The system architecture adopts a modern microservices-oriented approach, compartmentalized into four distinct layers:
 
-Data Ingestion Layer:
+### Data Ingestion Layer:
 
 The ingest.py module establishes a connection with the Binance API to facilitate the streaming of live one-minute OHLCV (Open, High, Low, Close, Volume) data.
 
 The sentiment_bot.py module polls RSS feeds, such as those from CoinDesk, and utilizes a Transformer model to evaluate and grade news sentiment.
 
-Storage Layer:
+### Storage Layer:
 
 TimescaleDB, deployed via Docker, serves as a high-performance time-series database. This PostgreSQL extension is utilized for the efficient storage of millions of data points.
 
-Intelligence Layer:
+### Intelligence Layer:
 
 FinBERT: A Transformer model from Hugging Face, fine-tuned on financial texts, is employed for sentiment classification.
 
 XGBoost: A Gradient Boosting classifier is trained using technical indicators—namely the Relative Strength Index (RSI), Moving Average Convergence Divergence (MACD), and volatility measures—to predict price direction over a fifteen-minute horizon.
 
-Presentation Layer:
+### Presentation Layer:
 
 Streamlit: This reactive web dashboard visualizes live price data, model signals, and news feeds.
 
@@ -48,16 +48,23 @@ The directory structure of the project is organized as follows:
 
 alpha-sentinel/
 ├── docker-compose.yml       # Configuration for database infrastructure
+
 ├── requirements.txt         # List of Python dependencies
+
 ├── ingest.py                # Worker module for fetching live price data
+
 ├── sentiment_bot.py         # Worker module for fetching and analyzing news
+
 ├── train_model.py           # Machine Learning pipeline for feature engineering and training
+
 ├── dashboard.py             # Frontend interface using Streamlit
+
 ├── check_data.py            # Utility script for database verification
+
 └── README.md                # Project documentation
 
 
-Setup and Installation
+### Setup and Installation
 
 Prerequisites
 
