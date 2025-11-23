@@ -76,14 +76,15 @@ Ensure that Docker Desktop is installed and operational, and that Python version
 Clone the repository to the local machine using the following commands:
 
 git clone [https://github.com/pankrulez/alpha-sentinel.git](https://github.com/pankrulez/alpha-sentinel.git)
-cd alpha-sentinel
+
+`cd alpha-sentinel`
 
 
 2. Database Initialization
 
 Initialize the TimescaleDB container using Docker Compose:
 
-docker-compose up -d
+`docker-compose up -d`
 
 
 3. Dependency Installation
@@ -92,13 +93,13 @@ It is recommended to create a virtual environment before installing the required
 
 **For Windows environments**
 
-python -m venv venv
-.\venv\Scripts\activate
+`python -m venv venv`
+`.\venv\Scripts\activate`
 
 **For macOS and Linux environments**
 
-python3 -m venv venv
-source venv/bin/activate
+`python3 -m venv venv`
+`source venv/bin/activate`
 
 **Installation of dependencies**
 
