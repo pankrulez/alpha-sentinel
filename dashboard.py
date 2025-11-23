@@ -15,9 +15,15 @@ from ta.trend import MACD
 # Try to get URI from Streamlit Secrets (Cloud), otherwise fail gracefully
 try:
     DB_URI = st.secrets["DB_URI"]
+    source = "☁️ CLOUD DATABASE"
 except FileNotFoundError:
     # Fallback for local testing if secrets.toml doesn't exist
     DB_URI = "postgresql+psycopg2://postgres:alpha_password@localhost:5432/postgres"
+    source = "🏠 LOCAL DOCKER"
+    
+# ADD THIS LINE TO DEBUG:
+st.toast(f"Connected to: {source}", icon="🔌")
+print(f"DEBUG: Connecting to {source}") # This prints in your terminal
 
 MODEL_PATH = "model.bin"
 
