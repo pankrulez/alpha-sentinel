@@ -28,25 +28,26 @@ XGBoost: A Gradient Boosting classifier is trained using technical indicators—
 
 Streamlit: This reactive web dashboard visualizes live price data, model signals, and news feeds.
 
-Technology Stack
+**Technology Stack**
 
-Programming Language: Python 3.9 or higher.
+- Programming Language: Python 3.9 or higher.
 
-Database Management: TimescaleDB (PostgreSQL) implemented via Docker.
+- Database Management: TimescaleDB (PostgreSQL) implemented via Docker.
 
-Machine Learning Models: XGBoost and FinBERT (Hugging Face Transformers).
+- Machine Learning Models: XGBoost and FinBERT (Hugging Face Transformers).
 
-Data Engineering Tools: Pandas, CCXT, Feedparser, and SQLAlchemy.
+- Data Engineering Tools: Pandas, CCXT, Feedparser, and SQLAlchemy.
 
-Visualization Tools: Streamlit and Plotly.
+- Visualization Tools: Streamlit and Plotly.
 
-DevOps Tools: Docker Compose.
+- DevOps Tools: Docker Compose.
 
-Project Structure
+### Project Structure
 
 The directory structure of the project is organized as follows:
 
 alpha-sentinel/
+
 ├── docker-compose.yml       # Configuration for database infrastructure
 
 ├── requirements.txt         # List of Python dependencies
@@ -66,7 +67,7 @@ alpha-sentinel/
 
 ### Setup and Installation
 
-Prerequisites
+**Prerequisites**
 
 Ensure that Docker Desktop is installed and operational, and that Python version 3.8 or higher is available on the system.
 
@@ -89,19 +90,22 @@ docker-compose up -d
 
 It is recommended to create a virtual environment before installing the required libraries:
 
-# For Windows environments
+**For Windows environments**
+
 python -m venv venv
 .\venv\Scripts\activate
 
-# For macOS and Linux environments
+**For macOS and Linux environments**
+
 python3 -m venv venv
 source venv/bin/activate
 
-# Installation of dependencies
+**Installation of dependencies**
+
 pip install pandas ccxt feedparser transformers torch sqlalchemy psycopg2-binary streamlit plotly pandas_ta xgboost scikit-learn yfinance
 
 
-Execution Instructions
+**Execution Instructions**
 
 The system operation necessitates the concurrent execution of multiple processes, adhering to microservices principles. It is advised to open separate terminal windows for each of the following components:
 
@@ -109,21 +113,21 @@ Terminal 1: Data Ingestion (Price Data)
 
 Execute the following command to initiate the script responsible for fetching live market data at one-minute intervals:
 
-python ingest.py
+`python ingest.py`
 
 
 Terminal 2: Sentiment Analysis (News Data)
 
 Execute the following command to start the script that monitors RSS feeds and performs FinBERT analysis:
 
-python sentiment_bot.py
+`python sentiment_bot.py`
 
 
 Terminal 3: Model Training (Initial Execution Only)
 
 To bootstrap the system, execute the training script. This process involves downloading historical data and training the initial XGBoost model:
 
-python train_model.py
+`python train_model.py`
 
 
 Note: This operation generates the model.bin file.
@@ -132,12 +136,12 @@ Terminal 4: Dashboard Launch
 
 Execute the following command to initialize the user interface:
 
-streamlit run dashboard.py
+`streamlit run dashboard.py`
 
 
 The dashboard can subsequently be accessed via a web browser at http://localhost:8501.
 
-Methodology
+**Methodology**
 
 Prediction Target
 
@@ -149,19 +153,19 @@ Label 1 (BUY): Indicates a positive prediction.
 
 Label 0 (HOLD): Indicates a negative prediction.
 
-Feature Engineering
+### Feature Engineering
 
 The model utilizes the following technical indicators:
 
-Relative Strength Index (RSI) (14-period): Indicates overbought or oversold momentum conditions.
+- Relative Strength Index (RSI) (14-period): Indicates overbought or oversold momentum conditions.
 
-Moving Average Convergence Divergence (MACD): Used for trend-following momentum analysis.
+- Moving Average Convergence Divergence (MACD): Used for trend-following momentum analysis.
 
-Volatility (20-period): Calculated as the rolling standard deviation of returns.
+- Volatility (20-period): Calculated as the rolling standard deviation of returns.
 
-Lagged Returns: Measures past performance over 5-minute and 15-minute intervals.
+- Lagged Returns: Measures past performance over 5-minute and 15-minute intervals.
 
-Future Enhancements
+### Future Enhancements
 
 [ ] Full Containerization: Encapsulate all Python scripts within individual Docker containers to facilitate one-click deployment via docker-compose.
 
@@ -171,10 +175,10 @@ Future Enhancements
 
 [ ] Cloud Deployment: Configure deployment pipelines for cloud infrastructure providers such as AWS EC2 or DigitalOcean.
 
-Contributing
+### Contributing
 
 Contributions are encouraged. For significant modifications, please initiate an issue discussion prior to submitting a pull request to ensure alignment with project objectives.
 
-License
+### License
 
 This project is licensed under the MIT License.
