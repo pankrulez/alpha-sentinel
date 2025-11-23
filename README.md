@@ -2,7 +2,7 @@
 
 The Alpha Sentinel represents a comprehensive, end-to-end machine learning system designed to forecast short-term Bitcoin price fluctuations. This is achieved through the synthesis of technical analysis, specifically focusing on price action, and sentiment analysis derived from news feeds. The system incorporates a production-grade data pipeline, a real-time inference engine, and an interactive dashboard intended for the monitoring of market signals.
 
-![Alt Text](\assets\dashboard.png)
+![Alt Text](assets\dashboard.png)
 
 ### System Architecture
 
