@@ -17,13 +17,18 @@ DB_CONFIG = {
     "port": "5432"
 }
 
+# --- CONFIG ---
+# Use Cloud URL if set, otherwise default to local
+DATABASE_URL = "postgresql://neondb_owner:npg_qzyhs8fxRr2K@ep-divine-pine-ad3z4af6-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require" 
+
+
 # --- LOAD MODEL ---
 print("🧠 Loading FinBERT model...")
 sentiment_pipe = pipeline("sentiment-analysis", model="ProsusAI/finbert")
 print("✅ Model Loaded!")
 
 def get_db_connection():
-    return psycopg2.connect(**DB_CONFIG)
+    return psycopg2.connect(DATABASE_URL, sslmode='require')
 
 def fetch_and_analyze_news():
     print(f"📰 Checking RSS Feed: {RSS_URL}...")

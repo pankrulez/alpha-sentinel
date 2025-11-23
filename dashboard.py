@@ -9,7 +9,15 @@ from ta.trend import MACD
 # --- CONFIG ---
 # SQLAlchemy requires a connection URL instead of a dictionary
 # Format: postgresql+psycopg2://user:password@host:port/dbname
-DB_URI = "postgresql+psycopg2://postgres:alpha_password@localhost:5432/postgres"
+# DB_URI = "postgresql+psycopg2://postgres:alpha_password@localhost:5432/postgres"
+
+# --- CONFIG ---
+# Try to get URI from Streamlit Secrets (Cloud), otherwise fail gracefully
+try:
+    DB_URI = st.secrets["DB_URI"]
+except FileNotFoundError:
+    # Fallback for local testing if secrets.toml doesn't exist
+    DB_URI = "postgresql+psycopg2://postgres:alpha_password@localhost:5432/postgres"
 
 MODEL_PATH = "model.bin"
 

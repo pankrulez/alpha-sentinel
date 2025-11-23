@@ -5,10 +5,19 @@ import pandas_ta as ta
 from ta.momentum import RSIIndicator
 from ta.trend import MACD
 import warnings
+import os
+import psycopg2
 
 warnings.filterwarnings('ignore')
 
 # ... (Keep DB config)
+
+# --- CONFIG ---
+# Use Cloud URL if set, otherwise default to local
+DATABASE_URL = "postgresql://neondb_owner:npg_qzyhs8fxRr2K@ep-divine-pine-ad3z4af6-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require" 
+
+# ... inside your connection function ...
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # LOAD MODEL
 print("🧠 Loading XGBoost model...")
